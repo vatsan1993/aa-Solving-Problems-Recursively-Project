@@ -12,7 +12,12 @@ range(7, 6); // []
 
 
 // your code here
-
+let range = (num1, num2) => {
+  if(num1 >= num2){
+    return [];
+  }
+  return [num1].concat(range(num1+1, num2))
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
