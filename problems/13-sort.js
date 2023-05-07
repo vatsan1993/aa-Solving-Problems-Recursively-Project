@@ -20,9 +20,27 @@ sort([4,1,6,3,1,7]); // [1, 1, 3, 4, 6, 7]
 sort([0, 1, -3]); // [-3, 0, 1]
 sort([]); // []
 ***********************************************************************/
+let getMinValue = (arr) => {
+  let minVal = arr[0];
+  for(let i = 0; i< arr.length ; i++){
+    if( arr[i] < minVal ){
+      minVal = arr[i];
+    }
+  }
+  return minVal;
+}
+
 
 function sort(nums, sorted = []) {
   // your code here
+  if(nums.length === 0){
+    return sorted;
+  }
+  let minVal = getMinValue(nums);
+  sorted.push(minVal);
+  let index = nums.indexOf(minVal);
+  nums.splice(index, 1);
+  return sort(nums, sorted)
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
