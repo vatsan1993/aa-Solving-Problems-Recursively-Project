@@ -14,7 +14,17 @@ iceCreamShop([], 'honey lavender'); // false
 
 
 // your code here
+let iceCreamShop = (flavors, favorite) => {
+  if( flavors.length === 0 ){
+    return false;
+  }
+  let value = flavors.pop();
+  if ( value === favorite ){
+    return true;
+  }
 
+  return  iceCreamShop(flavors, favorite);
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
