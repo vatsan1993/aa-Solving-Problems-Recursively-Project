@@ -20,11 +20,18 @@ fibonacci(10); // 55
 ***********************************************************************/
 
 // your code here
-  
+let fib = (n,a= 0, b = 1, count = 1) => {
+  if(count === n){
+    return b;
+  }
+  return fib(n , b, a+b, count + 1);
+}
+let fibonacci = (n) => {
+  return fib(n);
+}
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = fibonacci;
 } catch (e) {
   module.exports = null;
 }
-  
