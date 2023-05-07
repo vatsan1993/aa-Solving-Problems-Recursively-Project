@@ -42,9 +42,20 @@ times `advancedExponent` is being recursively called.
 
 function advancedExponent(b, n) {
   // your code here
+  if ( n === 0 ){
+    return 1;
+  }
+  if( n === 1 ){
+    return b;
+  }
+  if( n % 2 === 0 ){
+    return advancedExponent(b, n / 2) ** 2 ;
+  } else {
+    return b * (advancedExponent(b, (n - 1) / 2) ** 2);
+  }
 }
 
-
+// console.log(advancedExponent(2, 3));
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = advancedExponent;
