@@ -11,7 +11,18 @@ flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
 // your code here
-  
+let flatten = ( arr ) =>{
+  let newArr = [];
+  for(let i = 0;  i< arr.length; i++){
+    let value = arr[i];
+    if(Array.isArray(value)){
+      newArr = newArr.concat(flatten(arr[i]));
+    }else{
+      newArr = [...newArr , arr[i]];
+    }
+  }
+  return newArr;
+}
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = flatten;
