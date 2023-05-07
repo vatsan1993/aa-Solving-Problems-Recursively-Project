@@ -11,7 +11,24 @@ isSorted([5, 4, 3, 2, 1]); // false
 ***********************************************************************/
 
 // your code here
+let isSorted = (arr) => {
+  let val1 = arr.pop();
+  if ( arr.length == 1 ){
+    let val2 = arr[arr.length - 1 ];
+    if(val1 >= val2){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
+  let val2 = arr[arr.length - 1 ];
+  if(val1 < val2){
+    return false;
+  }
+  return isSorted(arr);
+
+}
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = isSorted;
