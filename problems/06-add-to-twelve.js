@@ -13,6 +13,17 @@ addToTwelve([1]); // false
 ***********************************************************************/
 
 // your code here
+let addToTwelve = (arr) => {
+  let val1 = arr.pop();
+  if( arr.length == 0 ){
+    return false;
+  }
+  let val2 = arr[arr.length - 1];
+  if( val1 + val2 === 12 ){
+    return true;
+  }
+  return addToTwelve(arr);
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
