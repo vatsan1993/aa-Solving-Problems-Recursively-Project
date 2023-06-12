@@ -56,16 +56,48 @@ combinations.
 function greedyMakeChange(target, coins = [25, 10, 5, 1]) {
   // no tests for greedyMakeChange so make sure to test this on your own
   // your code here
+  let result = [];
+  if (target === 0) {
+    return result;
+  }
+  for (let i = 0; i < coins.length; i++) {
+    let coin = coins[i];
+    if (coin <= target) {
+      result.push(coin);
+      let remainingCoins = greedyMakeChange(target - coin, coins);
+      result = result.concat(remainingCoins);
+      break;
+    }
+  }
+  return result;
 }
 
 function makeBetterChange(target, coins = [25, 10, 5, 1]) {
-  // your code here
-}
+  // base case, if target is <= 0
+  if (target < 0) return null;
+  if (target === 0) return [];
 
+  let minArray = null;
+
+  /* recursive case, Iterating through the coins array and subtracting the coin from the target. */
+  for (let i = 0; i < coins.length; i++) {
+    const targetSum = target - coins[i];
+    const result = makeBetterChange(targetSum, coins.slice(i)); // only recurse for same or smaller coin
+
+    if (result !== null) {
+      const resultArray = [...result, coins[i]];
+      if (minArray === null || resultArray.length < minArray.length) {
+        minArray = resultArray;
+      }
+    }
+  }
+
+  return minArray;
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
-  module.exports = makeBetterChange
+  module.exports = makeBetterChange;
 } catch (e) {
   module.exports = null;
 }
